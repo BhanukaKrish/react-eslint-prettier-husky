@@ -35,6 +35,7 @@ in the root folder create a file named .prettierrc.json this will contain custom
 "endOfLine": "lf"
 }
 ```
+
 you can learn more about these prettier rules and more on their official site [https://prettier.io/docs/en/options.html](https://prettier.io/docs/en/options.html)
 
 # Integrating Prettier with ESLint
@@ -61,4 +62,3 @@ to configure eslint-config-prettier in your .eslintrc.json extent "prettier" add
 "format": "prettier . --write": this script will run prettier from the root folder and auto fix format errors
 
 # Install Husky
-
