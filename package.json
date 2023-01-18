@@ -54,6 +54,6 @@
   },
   "lint-staged": {
     "*.js": "npm run lint",
-    "*.--write": "npm run format"
+    "*.{js,css,md,html,json}": "npm run format"
   }
 }
