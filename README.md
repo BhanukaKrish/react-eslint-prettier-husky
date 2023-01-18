@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### `npx create-react-app react-eslint-prettier-husky`
 
-## Available Scripts
+<!-- ### `npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks husky lint-staged` -->
 
-In the project directory, you can run:
+# Install ESLint
 
-### `npm start`
+### `npm install eslint --save-dev`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Install ESLint Config
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `npm init @eslint/config`
 
-### `npm test`
+you will need to answer some questions about how you would like to use eslint follow the following configuration
+(note that I chose react as the library, Airbnb as the style guide, and JSON as the file format. You can change these configurations according to your project)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+that object of rules:{} is where you can put your own rules if you want to but for now, we are using Airbnb rules as mentioned in "extends": ["plugin:react/recommended", "airbnb"]
+For more on eslint rules you can check their official site [https://eslint.org/docs/latest/rules/](https://eslint.org/docs/latest/rules/)
 
-### `npm run build`
+# Install Prettier
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `npm install --save-dev --save-exact prettier`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+in the root folder create a file named .prettierrc.json this will contain custom rules/options that you may want prettier to follow while formatting your code. enter the following code in your .prettierrc.json
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+{
+"tabWidth": 2,
+"useTabs": true,
+"printWidth": 80,
+"semi": true,
+"trailingComma": "es5",
+"singleQuote": true,
+"endOfLine": "lf"
+}
+```
+you can learn more about these prettier rules and more on their official site [https://prettier.io/docs/en/options.html](https://prettier.io/docs/en/options.html)
 
-### `npm run eject`
+# Integrating Prettier with ESLint
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `npm install --save-dev eslint-config-prettier`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+to configure eslint-config-prettier in your .eslintrc.json extent "prettier" add it as last like following
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+"extends": ["plugin:react/recommended", "airbnb", "prettier"],
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Configure scripts
 
-## Learn More
+```
+"scripts": {
+... // other scripts you have
+"lint": "eslint . --fix --max-warnings=0"
+"format": "prettier . --write"
+},
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+"lint": "eslint . --fix --max-warnings=0": this script runs eslint from the root folder and auto fix error and checks that we don't have any warning
+"format": "prettier . --write": this script will run prettier from the root folder and auto fix format errors
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Install Husky
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
